@@ -12,8 +12,18 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('reading_tracker')
 
-read = SHEET.worksheet('read')
+def menu():
+    """
+    Provide two options in the menu for user,
+    One for log-in a book
+    Second is information on the program.
+    """
+    print("Welcome to Reading-Tracker!\n")
+    print("Menu:")
+    print("1. Log-in a book")
+    print("2. About Reading-Tracker\n")
 
-data = read.get_all_values()
+    menu_chosen = int(input("Enter '1' or '2' from the menu to continue:"))
+    print(f"You chose {menu_chosen}")
 
-print(data)
+menu()
