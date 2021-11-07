@@ -24,7 +24,7 @@ def menu():
         print("1. Log-in a book")
         print("2. About Reading-Tracker\n")
 
-        menu_chosen = input("Enter '1' or '2' from the menu to continue: ")
+        menu_chosen = input("Enter '1' or '2' from the menu to continue: \n")
 
         if validate_menu(menu_chosen):
             print("menu option is valid!")
