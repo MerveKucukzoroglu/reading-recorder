@@ -18,14 +18,19 @@ def menu():
     One for log-in a book
     Second is information on the program.
     """
-    print("Welcome to Reading-Tracker!\n")
-    print("Menu:")
-    print("1. Log-in a book")
-    print("2. About Reading-Tracker\n")
+    while True:
+        print("Welcome to Reading-Tracker!\n")
+        print("Menu:")
+        print("1. Log-in a book")
+        print("2. About Reading-Tracker\n")
 
-    menu_chosen = input("Enter '1' or '2' from the menu to continue: ")
+        menu_chosen = input("Enter '1' or '2' from the menu to continue: ")
 
-    validate_menu(menu_chosen)
+        if validate_menu(menu_chosen):
+            print("menu option is valid!")
+            break
+    return menu_chosen
+
 
 def validate_menu(value):
     """
@@ -40,9 +45,12 @@ def validate_menu(value):
         print("You will enter the date you started and completed the book")
         print("You can also use this tracker to enter future dates and make a record of when you want to read this book")
     elif value == "":
-        print("Please choose an option from the menu")    
+        print("Please choose an option from the menu") 
+        return False   
     else:
-        print(f"Option chosen is not in the menu, you chose {value}.\nPlease enter '1' or '2'")
-              
+        print(f"Option chosen is not in the menu, you chose {value}.\nPlease enter '1' or '2'\n")
+        return False
 
-menu()
+    return True          
+
+user_chose = menu()
