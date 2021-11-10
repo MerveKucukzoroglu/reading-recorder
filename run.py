@@ -1,3 +1,4 @@
+from os import system, name
 import gspread
 from google.oauth2.service_account import Credentials
 
@@ -104,6 +105,14 @@ def validate_menu(value):
         return False
 
     return True
+
+
+def clear():
+    """
+    Clears the terminal whenever called.
+    Credentials for this code is mentioned in README.md
+    """
+    _ = system("cls") if name == "nt" else system("clear")
 
 
 user_chose = menu()
