@@ -29,7 +29,6 @@ def menu():
         menu_chosen = input("Enter '1' or '2' from the menu to continue: \n")
 
         if validate_menu(menu_chosen):
-            print("menu option is valid!")
             break
     return menu_chosen
 
@@ -59,7 +58,6 @@ def about():
         print("Would you like to submit a book?")
         choose_about = input("Type 'y' to continue or 'n' to exit: \n")
         if validate_about(choose_about):
-            print("Redirecting you to option chosen...")
             break
     return choose_about
 
@@ -70,15 +68,18 @@ def validate_about(option):
     Redirects user to valid option chosen
     """
     if (option == "y" or option == "Y"):
+        clear()
         print("Going to log a book...\n")
         submit_book()
     elif (option == "n" or option == "N"):
-        print("Exiting the menu...")
-        print("Clearing the terminal and moving to home page...\n")
+        clear()
+        menu()
     elif option == "":
-        print("Please choose a valid option!")
+        clear()
+        print("Please choose a valid option!\n")
         return False
     else:
+        clear()
         print(f"'{option}' is not valid option.")
         print("Please type 'y' to continue or 'n' to exit\n")
         return False
@@ -92,14 +93,17 @@ def validate_menu(value):
     Let the user enter '1' or '2' else print an error.
     """
     if value == "1":
-        print("Calling submit_book function...")
+        clear()
         submit_book()
     elif value == "2":
+        clear()
         about()
     elif value == "":
-        print("Please choose a valid option")
+        clear()
+        print("Please choose a valid option\n")
         return False
     else:
+        clear()
         print(f"'{value}' is not valid option in the menu.")
         print("Please enter '1' or '2'\n")
         return False
@@ -112,7 +116,10 @@ def clear():
     Clears the terminal whenever called.
     Credentials for this code is mentioned in README.md
     """
-    _ = system("cls") if name == "nt" else system("clear")
+    if name == "nt":
+        _ = system("cls")
+    else:
+        _ = system("clear")
 
 
 user_chose = menu()
