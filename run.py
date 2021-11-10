@@ -12,6 +12,7 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('reading_tracker')
 
+
 def menu():
     """
     Provide two options in the menu for user,
@@ -31,11 +32,14 @@ def menu():
             break
     return menu_chosen
 
+
 def submit_book():
     """
     Initial function to begin collecting data from user
     """
-    print("It's great to see you submitting a book. Please follow the steps to successfully log-in a book!")
+    print("It's great to see you submitting a book.")
+    print("Please follow the steps to successfully log-in a book!")
+
 
 def about():
     """
@@ -43,17 +47,21 @@ def about():
     Either exits the about section or
     The user submits a book
     """
-    print("This is a tracker to keep a track on the books you read in a time period.")
-    print("You will be asked to enter name of the book and name of the author")
+    print("This is a recorder to keep a track on your reading.")
+    print("You will be asked to enter your name and email address")
+    print("You will enter title of the book and author")
     print("You will enter the date you started and completed the book")
-    print("You can also use this tracker to enter future dates and make a record of when you want to read this book\n")
+    print("You can also use this tracker to enter future dates.")
+    print("It will help you keep a track of when you want to read the book\n")
 
-    while True:  
-        choose_about = input("Would you like to submit a book?\nType 'y' to continue or 'n' to exit: ")
+    while True:
+        print("Would you like to submit a book?")
+        choose_about = input("Type 'y' to continue or 'n' to exit: \n")
         if validate_about(choose_about):
             print("Redirecting you to option chosen...")
             break
     return choose_about
+
 
 def validate_about(option):
     """
@@ -70,7 +78,8 @@ def validate_about(option):
         print("Please choose a valid option!")
         return False
     else:
-        print(f"Option chosen is not valid, you chose {option}.\nPlease enter 'y' to continue or 'n' to exit\n")
+        print(f"'{option}' is not valid option.")
+        print("Please type 'y' to continue or 'n' to exit\n")
         return False
 
     return True
@@ -87,12 +96,14 @@ def validate_menu(value):
     elif value == "2":
         about()
     elif value == "":
-        print("Please choose a valid option") 
-        return False   
+        print("Please choose a valid option")
+        return False
     else:
-        print(f"Option chosen is not in the menu, you chose {value}.\nPlease enter '1' or '2'\n")
+        print(f"'{value}' is not valid option in the menu.")
+        print("Please enter '1' or '2'\n")
         return False
 
-    return True          
+    return True
+
 
 user_chose = menu()
