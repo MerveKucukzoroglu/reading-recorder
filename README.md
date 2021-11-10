@@ -32,3 +32,10 @@ This project was deployed to Heroku.
 View the live site [here](https://reading-recorder.herokuapp.com/)
 
 ## Credits
+
+* Clear function credited to [GeekforGeeks](https://www.geeksforgeeks.org/clear-screen-python/):
+    * `def clear():`
+     `if name == "nt":`
+       ` _ = system("cls")`
+    `else:`
+        `_ = system("clear")`
