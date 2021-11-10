@@ -15,13 +15,13 @@ SHEET = GSPREAD_CLIENT.open('reading_tracker')
 def menu():
     """
     Provide two options in the menu for user,
-    One for log-in a book
+    One for log a book
     Second is information on the program.
     """
     while True:
         print("Welcome to Reading-Tracker!\n")
         print("Menu:")
-        print("1. Log-in a book")
+        print("1. Log a book")
         print("2. About Reading-Tracker\n")
 
         menu_chosen = input("Enter '1' or '2' from the menu to continue: \n")
@@ -40,15 +40,41 @@ def submit_book():
 def about():
     """
     About the program from menu
-    Either exits the about section or 
+    Either exits the about section or
     The user submits a book
     """
     print("This is a tracker to keep a track on the books you read in a time period.")
     print("You will be asked to enter name of the book and name of the author")
     print("You will enter the date you started and completed the book")
     print("You can also use this tracker to enter future dates and make a record of when you want to read this book\n")
-    
-    choose_about = input("Would you like to submit a book?\nType 'y' to continue or 'n' to exit: ")    
+
+    while True:  
+        choose_about = input("Would you like to submit a book?\nType 'y' to continue or 'n' to exit: ")
+        if validate_about(choose_about):
+            print("Redirecting you to option chosen...")
+            break
+    return choose_about
+
+def validate_about(option):
+    """
+    Validates the option chosen in menu - about section
+    Redirects user to valid option chosen
+    """
+    if (option == "y" or option == "Y"):
+        print("Going to log a book...\n")
+        submit_book()
+    elif (option == "n" or option == "N"):
+        print("Exiting the menu...")
+        print("Clearing the terminal and moving to home page...\n")
+    elif option == "":
+        print("Please choose a valid option!")
+        return False
+    else:
+        print(f"Option chosen is not valid, you chose {option}.\nPlease enter 'y' to continue or 'n' to exit\n")
+        return False
+
+    return True
+
 
 def validate_menu(value):
     """
