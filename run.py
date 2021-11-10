@@ -20,8 +20,8 @@ def menu():
     One for log a book
     Second is information on the program.
     """
+    print("Welcome to Reading-Tracker!\n")
     while True:
-        print("Welcome to Reading-Tracker!\n")
         print("Menu:")
         print("1. Log a book")
         print("2. About Reading-Tracker\n")
@@ -31,6 +31,30 @@ def menu():
         if validate_menu(menu_chosen):
             break
     return menu_chosen
+
+
+def validate_menu(value):
+    """
+    Direct user to option chosen from the menu.
+    Let the user enter '1' or '2' else print an error.
+    """
+    if value == "1":
+        clear()
+        submit_book()
+    elif value == "2":
+        clear()
+        about()
+    elif value == "":
+        clear()
+        print("Please choose a valid option\n")
+        return False
+    else:
+        clear()
+        print(f"'{value}' is not valid option in the menu.")
+        print("Please enter '1' or '2'\n")
+        return False
+
+    return True
 
 
 def submit_book():
@@ -82,30 +106,6 @@ def validate_about(option):
         clear()
         print(f"'{option}' is not valid option.")
         print("Please type 'y' to continue or 'n' to exit\n")
-        return False
-
-    return True
-
-
-def validate_menu(value):
-    """
-    Direct user to option chosen from the menu.
-    Let the user enter '1' or '2' else print an error.
-    """
-    if value == "1":
-        clear()
-        submit_book()
-    elif value == "2":
-        clear()
-        about()
-    elif value == "":
-        clear()
-        print("Please choose a valid option\n")
-        return False
-    else:
-        clear()
-        print(f"'{value}' is not valid option in the menu.")
-        print("Please enter '1' or '2'\n")
         return False
 
     return True
