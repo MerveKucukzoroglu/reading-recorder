@@ -141,12 +141,15 @@ def validate_name(name_input):
     Passes only when the user has submitted a name
     """
     if name_input == "":
+        clear()
         print("Oh..uh I'm afraid you have left the name blank.\n")
         return False
     elif (name_input.isnumeric()):
+        clear()
         print(f"Have you just entered number '{name_input}' as your name?")
         return False
     elif (not name_input.isalpha()):
+        clear()
         print("You must enter your name in alphabets!\n")
         return False
     else:
