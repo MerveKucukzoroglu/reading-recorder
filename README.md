@@ -43,9 +43,12 @@ Alternatively, if using Gitpod, you can click below to create your own workspace
 
 ## Credits
 
-* Clear function credited to [GeekforGeeks](https://www.geeksforgeeks.org/clear-screen-python/):
+* _Clear_ function credited to [GeekforGeeks](https://www.geeksforgeeks.org/clear-screen-python/):
     * `def clear():`
      `if name == "nt":`
        ` _ = system("cls")`
     `else:`
         `_ = system("clear")`
+
+* _Email validation_ credits to:
+    * [Wikipedia](https://en.wikipedia.org/wiki/Email_address) for `regex = r"^[a-zA-Z0-9._%+-]{1,64}@[a-zA-Z0-9.-]{3,252}\.[a-zA-Z]{2,}$"`.
