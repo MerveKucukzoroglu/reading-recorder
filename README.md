@@ -29,26 +29,30 @@ The program function only when complete and valid data is entered by the user. T
         
         ![menu](documentation/menu.png)
 
-    * **Menu Errors:** If the user types _random letters, random numbers or random special characters_ the error will pop-up. User will be responded with what they typed and reason for error. Menu will be displayed again and what must they do to get the valid option. 
+    * **Menu Errors:** If the user types _random letters, random numbers, random special characters or enters empty string_ the error will pop-up. User will be responded with what they typed and reason for error. Menu will be displayed again and what must they do to get the valid option. 
 
         ![menu-letters-error](documentation/menu-letters-error.png)
 
         ![menu-num-error](documentation/menu-num-error.png) 
 
-        ![menu-special-char-error](documentation/menu-special-char-error.png)    
+        ![menu-special-char-error](documentation/menu-special-char-error.png)
+
+        ![empty-menu-error](documentation/empty-menu-error.png)     
 
 
 * **About:** If user entered `2` they will see what Reding-Tracker is about. They will then be asked to enter either to continue or exit the about section. 
 
     ![about](documentation/about.png)
 
-    * **About section Errors:** About section is looped with `while True` and `if, elif, else` validation function until a valid input is entered by the user. If the user types _random letters, random numbers or random special characters_ the error will pop-up. User will be responded with what they typed and reason for error. Valid options will be displayed again and what must they do to get the valid option. 
+    * **About section Errors:** About section is looped with `while True` and `if, elif, else` validation function until a valid input is entered by the user. If the user types _random letters, random numbers, random special characters or enters empty string_ the error will pop-up. User will be responded with what they typed and reason for error. Valid options will be displayed again and what must they do to get the valid option. 
 
         ![random-error-about](documentation/random-error-about.png)
 
         ![num-error-about](documentation/num-error-about.png)
 
         ![special-char-error-about](documentation/special-char-error-about.png)
+
+        ![empty-about-error](documentation/empty-about-error.png)
 
 * **Exit from about**: If the user types `n` or `N`, they will exit the about and be directed back to home page with menu.
 
@@ -57,6 +61,12 @@ The program function only when complete and valid data is entered by the user. T
 * **Log a book:** This step is reached either from Menu option `1` or by entering `y` or `Y` from about section of menu. When the user reaches this step, user will begin to follow steps to log a book. 
 
      ![first-name](documentation/first-name.png)
+
+* **Collect First and Last name of user:** When the user is at the log a book step, they will be asked to enter their first name and then last name.
+    
+    ![name](documentation/name.png)
+
+    * **Errors in user name input:** User will be looped with `while True` and `if, elif, else` validation function until a valid string of input is entered by the user. If the user types _numbers, special characters, or enters empty string_ the errors will pop-up. User will be responded with what they typed and reason for error. Valid options will be displayed again and what must they do to get the valid option. 
 
 ### Future Features
 
