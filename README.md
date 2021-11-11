@@ -86,7 +86,17 @@ The program function only when complete and valid data is entered by the user. T
 
 * **Email step:** Once the user succeeds to enter valid name input, they will be at email stage. In this step user is asked to enter a valid email. Email is validated by `regex` described and credited in the credits section below. 
 
-    ![email](documentation/email.png)            
+    ![email](documentation/email.png)
+
+    If email entered is a valid email, then the outpul will display:
+    
+    ![correct-mail](documentation/correct-mail.png)
+
+    * Invalid Email Errors: User is looped with `while True` and `if, elif, else` statements until email entered is validated by regex.
+
+        ![invalid-email](documentation/invalid-mail.png)
+
+        ![mail-error](documentation/mail-error.png)
 
 ### Future Features
 
