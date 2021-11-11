@@ -23,10 +23,28 @@ The program function only when complete and valid data is entered by the user. T
 
 ## Features
 ### [Existing Features](#existing-eatures)
- User is welcomed by the home page of menu. The menu includes two options:
-        1. Log a book
-        2. About Reading-Tracker
+ * **Home Page and Menu:** User is welcomed by the home page with menu. Menu is looped with `while True` and `if, elif, else` validation function. The menu includes two options and user is only allowed to proceed if they enter `1` or `2`:
+    1. Log a book
+    2. About Reading-Tracker
+        
         ![menu](documentation/menu.png)
+
+    * **Menu Errors:** If the user types _random letters, random numbers or random special characters_ the error will pop-up. User will be responded with what they typed and reason for error. Menu will be displayed again and what must they do to get the valid option. 
+
+        ![menu-letters-error](documentation/menu-letters-error.png)
+
+        ![menu-num-error](documentation/menu-num-error.png) 
+
+        ![menu-special-char-error](documentation/menu-special-char-error.png)    
+
+
+* **About:** If user entered `2` they will see what Reding-Tracker is about.
+
+    ![about](documentation/about.png)
+
+* **Exit from about**: If the user types `n` or `N`, they will exit the about and be directed back to home page with menu.
+* **Log a book:** This step is reached either from Menu option `1` or by enterin `y` or `Y` from about section of menu. When the user reaches this step, user will begin to follow steps to log a book. 
+     ![first-name](documentation/first-name.png)
 
 ### Future Features
 
