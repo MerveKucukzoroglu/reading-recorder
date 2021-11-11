@@ -68,6 +68,26 @@ The program function only when complete and valid data is entered by the user. T
 
     * **Errors in user name input:** User will be looped with `while True` and `if, elif, else` validation function until a valid string of input is entered by the user. If the user types _numbers, special characters, or enters empty string_ the errors will pop-up. User will be responded with what they typed and reason for error. Valid options will be displayed again and what must they do to get the valid option. 
 
+        * First name errors' screenshots: 
+
+            ![first-name-blank-error](documentation/fname-blank-error.png)
+
+            ![first-name-num-error](documentation/fname-num-error.png)
+
+            ![first-name-special-error](documentation/fname-special-error.png)
+
+        * Last name errors' screenshots:    
+
+            ![last-name-blank-error](documentation/lname-blank-error.png)
+
+            ![last-name-num-error](documentation/lname-num-error.png)
+
+            ![last-name-special-error](documentation/lname-special-error.png)
+
+* **Email step:** Once the user succeeds to enter valid name input, they will be at email stage. In this step user is asked to enter a valid email. Email is validated by `regex` described and credited in the credits section below. 
+
+    ![email](documentation/email.png)            
+
 ### Future Features
 
 
