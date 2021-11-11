@@ -118,12 +118,20 @@ def username():
     Place it to the name field in Google Sheet
     """
     while True:
-        name = input("Please enter your first name: \n")
-        if validate_name(name):
-            clear()
-            print(f"{name}, welcome to your Reading-Tracker.")
+        first_name = input("Please enter your First name: \n")
+        if validate_name(first_name):
+            # clear()
+            # print(f"{first_name}, welcome to your Reading-Tracker.")
             break
-    return name
+    while True:
+        last_name = input("Please enter your Last name: \n")
+        if validate_name(last_name):
+            # clear()
+            # print("Last name")
+            break
+    clear()    
+    full_name = print(f"{first_name} {last_name}, welcome!")
+    return full_name
 
 
 def validate_name(name_input):
