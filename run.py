@@ -121,14 +121,10 @@ def username():
     while True:
         first_name = input("Please enter your First name: \n")
         if validate_name(first_name):
-            # clear()
-            # print(f"{first_name}, welcome to your Reading-Tracker.")
             break
     while True:
         last_name = input("Please enter your Last name: \n")
         if validate_name(last_name):
-            # clear()
-            # print("Last name")
             break
     clear()
     full_name = print(f"Welcome, {first_name} {last_name}!\n")
@@ -150,7 +146,7 @@ def validate_name(name_input):
         return False
     elif (not name_input.isalpha()):
         clear()
-        print("You must enter your name in alphabets!\n")
+        print(f"You entered '{name_input}', enter your name in alphabets!\n")
         return False
     else:
         return True
@@ -167,7 +163,8 @@ def email():
         regex = r"^[a-zA-Z0-9._%+-]{1,64}@[a-zA-Z0-9.-]{3,252}\.[a-zA-Z]{2,}$"
     
         if(not re.fullmatch(regex, user_email)):
-            print("Invalid Email, please enter a real email address: \n") 
+            clear()
+            print(f"'{user_email}' is Invalid, enter a real email address!\n")
         else:
             print("Thank you for entering your email!\n")
             break
