@@ -1,6 +1,7 @@
 from os import system, name
 import gspread
 from google.oauth2.service_account import Credentials
+import re
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -129,8 +130,8 @@ def username():
             # clear()
             # print("Last name")
             break
-    clear()    
-    full_name = print(f"{first_name} {last_name}, welcome!")
+    clear()
+    full_name = print(f"Welcome, {first_name} {last_name}!\n")
     return full_name
 
 
@@ -146,11 +147,24 @@ def validate_name(name_input):
         print(f"Have you just entered number '{name_input}' as your name?")
         return False
     elif (not name_input.isalpha()):
-        print("You must enter your name in alphabets\n")
+        print("You must enter your name in alphabets!\n")
         return False
     else:
         return True
     return True
+
+
+def email():
+    while True:
+        user_email = input("Please enter your email: \n")
+        regex = r"^[a-zA-Z0-9._%+-]{1,64}@[a-zA-Z0-9.-]{3,252}\.[a-zA-Z]{2,}$"
+    
+        if(not re.fullmatch(regex, user_email)):
+            print("Invalid Email, please enter a real email address: \n") 
+        else:
+            print("Thank you for entering your email!\n")
+            break
+    return user_email
 
 
 def clear():
@@ -164,4 +178,8 @@ def clear():
         _ = system("clear")
 
 
-user_chose = menu()
+def main():
+    user_chose = menu()
+    user_email = email()
+
+main()
