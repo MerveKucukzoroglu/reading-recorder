@@ -63,6 +63,7 @@ def submit_book():
     """
     print("It's great to see you submitting a book.")
     print("Please follow the steps to successfully log-in a book!")
+    username()
 
 
 def about():
@@ -108,6 +109,39 @@ def validate_about(option):
         print("Please type 'y' to continue or 'n' to exit\n")
         return False
 
+    return True
+
+
+def username():
+    """
+    Collect username by input
+    Place it to the name field in Google Sheet
+    """
+    while True:
+        name = input("Please enter your first name: \n")
+        if validate_name(name):
+            clear()
+            print(f"{name}, welcome to your Reading-Tracker.")
+            break
+    return name
+
+
+def validate_name(name_input):
+    """
+    Validates user-input for username
+    Passes only when the user has submitted a name
+    """
+    if name_input == "":
+        print("Oh..uh I'm afraid you have left the name blank.\n")
+        return False
+    elif (name_input.isnumeric()):
+        print(f"Have you just entered number '{name_input}' as your name?")
+        return False
+    elif (not name_input.isalpha()):
+        print("You must enter your name in alphabets\n")
+        return False
+    else:
+        return True
     return True
 
 
