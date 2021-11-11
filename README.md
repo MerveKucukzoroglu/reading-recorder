@@ -1,12 +1,35 @@
 # Reading-Tracker
+Reading Tracker is a reading recorder to keep a track on your readings.
+This program aims to target the bookworms. It is a handy program to store details of the book you read. You can use this tracker both when you complete a book or when you wish to read the book. 
+Reading tracker was also designed bearing in mind the busy schedules of our lives and hopes to motivate new readers. When you keep a track of your books, you will see the time frame of how long you took to complete the book. 
 
 ## How to use
+The program function only when complete and valid data is entered by the user. The program loops at a particular step if the user does not enter a valid input. This is a useful way to only keep correct data entered by the user. [Please refer to existing features to view features in detail with screenshots of each step](#existing-eatures)
+
+* User is asked to choose an option from menu to continue:
+    1. Log a book
+    2. About Reading-Tracker
+* User is only allowed to proceed if they enter `1` or `2`.
+* If they choose 2 they will see what Reding-Tracker is about.
+* User is then asked to either proceed to _log a book_ or _exit_.
+* _Exit_ option will take the user back to home page, which displays the menu.
+* When the user chooses to proceed to _Log a book_ either from menu or from the about section of menu, they will begin submittinbg data  
+* User is first asked to enter User name with first name and last name. 
+* Next user is asked to enter a valid email address.
+* After valid email, user will be asked to type and submit the title of book they wish to record.
+* Next, name of the author will be collected from user.
+* User will then be asked to enter start date of the book i.e _when started reading that book_. Then, user will enter date of when they have completed that book.
+* Once the date is valid for both the date inputs in `dd/mm/yyyy` format; a complete data submitted will be displayed as the output to the user.
 
 ## Features
-### Existing Features
+### [Existing Features](#existing-eatures)
+ User is welcomed by the home page of menu. The menu includes two options:
+        1. Log a book
+        2. About Reading-Tracker
+        ![menu](documentation/menu.png)
+
 ### Future Features
 
-## Data model
 
 ## Testing
 ### Bugs
