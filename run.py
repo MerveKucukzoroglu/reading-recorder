@@ -63,7 +63,7 @@ def submit_book():
     Initial function to begin collecting data from user
     """
     print("It's great to see you submitting a book.")
-    print("Please follow the steps to successfully log-in a book!")
+    print("Please follow the steps to successfully log-in a book!\n")
     username()
 
 
