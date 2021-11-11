@@ -155,6 +155,10 @@ def validate_name(name_input):
 
 
 def email():
+    """
+    Collects and passes only valid email of the user
+    Email validation credits are described in README.md
+    """
     while True:
         user_email = input("Please enter your email: \n")
         regex = r"^[a-zA-Z0-9._%+-]{1,64}@[a-zA-Z0-9.-]{3,252}\.[a-zA-Z]{2,}$"
