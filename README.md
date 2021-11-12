@@ -14,9 +14,9 @@ The program function only when complete and valid data is entered by the user. T
 * User is then asked to either proceed to _log a book_ or _exit_.
 * _Exit_ option will take the user back to home page, which displays the menu.
 * When the user chooses to proceed to _Log a book_ either from menu or from the about section of menu, they will begin submittinbg data  
-* User is first asked to enter User name with first name and last name. 
-* Next user is asked to enter a valid email address.
-* After valid email, user will be asked to type and submit the title of book they wish to record.
+* User is first asked to enter a valid email address.  
+* After valid email, user is asked to enter User name with first name and last name..
+* Next, user will be asked to type and submit the title of book they wish to record.
 * Next, name of the author will be collected from user.
 * User will then be asked to enter start date of the book i.e _when started reading that book_. Then, user will enter date of when they have completed that book.
 * Once the date is valid for both the date inputs in `dd/mm/yyyy` format; a complete data submitted will be displayed as the output to the user.
@@ -58,11 +58,25 @@ The program function only when complete and valid data is entered by the user. T
 
     ![menu](documentation/menu.png)
 
-* **Log a book:** This step is reached either from Menu option `1` or by entering `y` or `Y` from about section of menu. When the user reaches this step, user will begin to follow steps to log a book. 
+* **Log a book:** This step is reached either from Menu option `1` or by entering `y` or `Y` from about section of menu. When the user reaches this step, user will begin by entering their email address and follow the steps to log a book. 
 
-     ![first-name](documentation/first-name.png)
+     
 
-* **Collect First and Last name of user:** When the user is at the log a book step, they will be asked to enter their first name and then last name.
+* **Email step:** Once the user is at this stage, they will be at email stage. In this step user is asked to enter a valid email. Email is validated by `regex` described and credited in the credits section below. 
+
+    ![enter-mail](documentation/enter_mail.png)
+
+    If email entered is a valid email, then the outpul will display:
+    
+    ![correct-mail](documentation/correct-mail.png)
+
+    * Invalid Email Errors: User is looped with `while True` and `if, elif, else` statements until email entered is validated by regex.
+
+        ![invalid-email](documentation/invalid-mail.png)
+
+        ![mail-error](documentation/mail-error.png)     
+
+* **Collect First and Last name of user:** After entering valid email, they will be asked to enter their first name and then last name. The user input first letters will be capitalized for the next step by `.capitalize()` function.
     
     ![name](documentation/name.png)
 
@@ -84,19 +98,9 @@ The program function only when complete and valid data is entered by the user. T
 
             ![last-name-special-error](documentation/lname-special-error.png)
 
-* **Email step:** Once the user succeeds to enter valid name input, they will be at email stage. In this step user is asked to enter a valid email. Email is validated by `regex` described and credited in the credits section below. 
-
-    ![email](documentation/email.png)
-
-    If email entered is a valid email, then the outpul will display:
+* **Book Information Stage:** At this stage, user will be asked to enter book title and author name. The input they enter will capitalize first letter of each word by `.title()` method.
     
-    ![correct-mail](documentation/correct-mail.png)
-
-    * Invalid Email Errors: User is looped with `while True` and `if, elif, else` statements until email entered is validated by regex.
-
-        ![invalid-email](documentation/invalid-mail.png)
-
-        ![mail-error](documentation/mail-error.png)
+    ![book-info](documentation/book-info.png)
 
 ### Future Features
 
