@@ -60,16 +60,44 @@ def validate_menu(value):
 
 def submit_book():
     """
-    This function will collect
-    Title and author information from the user.
+    Call email, username, and book_info functions one by one
     """
     email()
     username()
+    book_info()
 
+
+def book_info():
+    """
+    This function will collect
+    Title and author information from the user.
+    """
     print("Hello there bookworm! Lets see which book you have read!")
     print("It's okay if you enter the book you wish to read later..\n")
-    book_title = input("You can now enter the title of the book: \n")
-    author = input(f"Who is the author of {book_title}? \n")
+    while True:
+        book_title = input("You can now enter the title of the book: \n")
+        if validate_book(book_title.title()):
+            break
+        
+    while True:
+        author = input(f"Who is the author of {book_title.title()}? \n")
+        if validate_book(author):
+            break
+    print("You have submitted the following book: \n") 
+    book_data = print(f"{book_title.title()} by {author.title()}\n")
+    return book_data
+
+
+def validate_book(value):
+    """
+    Validate input submitted by user is not empty
+    """
+    if value == "":
+        print("You have forgotten to type here..\n")
+        return False
+    else:
+        return True
+    return True
 
 
 def about():
