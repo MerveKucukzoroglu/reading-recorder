@@ -93,7 +93,8 @@ def validate_book(value):
     Validate input submitted by user is not empty
     """
     if value == "":
-        print("You have forgotten to type here..\n")
+        clear()
+        print("Oops.. You have forgotten to type..\n")
         return False
     else:
         return True
