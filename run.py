@@ -127,7 +127,7 @@ def username():
         if validate_name(last_name):
             break
     clear()
-    full_name = print(f"Welcome, {first_name} {last_name}!\n")
+    full_name = print(f"Welcome, {first_name.capitalize()} {last_name.capitalize()}!\n")
     return full_name
 
 
