@@ -1,7 +1,22 @@
+import os
 from os import system, name
 import gspread
 from google.oauth2.service_account import Credentials
 import re
+
+# ----- EMAIL SETTINGS ----- #
+import smtplib  # SMTP protocol client (sending emails)
+from email.mime.multipart import MIMEMultipart  # MIME (sending emails)
+from email.mime.text import MIMEText  # Multipurpose Internet Mail Extensions
+if os.path.exists("env.py"):
+    import env  # noqa
+MY_ADDRESS = os.environ.get("MY_ADDRESS")
+PASSWORD = os.environ.get("PASSWORD")
+
+full_name = ""
+book_data = ""
+user_email = ""
+
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -62,9 +77,25 @@ def submit_book():
     """
     Call email, username, and book_info functions one by one
     """
-    email()
-    username()
-    book_info()
+    user_email = email()
+    full_name = username()
+    print(full_name)
+    book_data = book_info()
+    print(book_data)
+    # send the user an email with the book details they've entered
+    msg = MIMEMultipart()
+    msg["From"] = MY_ADDRESS
+    msg["To"] = user_email
+    msg["Subject"] = f"Test: {user_email}"
+    formatEmail = f"{full_name}<br>{book_data}<br>"
+    msg.attach(MIMEText(str(formatEmail), "html"))  # must convert to str()
+    smtpserver = smtplib.SMTP("smtp.gmail.com", 587)  # access server
+    smtpserver.ehlo()  # identify ourselves to smtp gmail client
+    smtpserver.starttls()  # secure our email with tls encryption
+    smtpserver.ehlo()  # re-identify ourselves as an encrypted connection
+    smtpserver.login(MY_ADDRESS, PASSWORD)  # login to the server
+    smtpserver.send_message(msg)  # send the message
+    smtpserver.quit()  # quit the server
 
 
 def book_info():
@@ -84,7 +115,7 @@ def book_info():
         if validate_book(author):
             break
     print("You have submitted the following book: \n") 
-    book_data = print(f"{book_title.title()} by {author.title()}\n")
+    book_data = f"{book_title.title()} by {author.title()}\n"
     return book_data
 
 
@@ -127,11 +158,11 @@ def validate_about(option):
     Validates the option chosen in menu - about section
     Redirects user to valid option chosen
     """
-    if (option == "y" or option == "Y"):
+    if (option.lower() == "y"):
         clear()
         print("Going to log a book...\n")
         submit_book()
-    elif (option == "n" or option == "N"):
+    elif (option.lower() == "n"):
         clear()
         menu()
     elif option == "":
@@ -161,7 +192,7 @@ def username():
         if validate_name(last_name):
             break
     clear()
-    full_name = print(f"{first_name.capitalize()} {last_name.capitalize()},\n")
+    full_name = f"{first_name.capitalize()} {last_name.capitalize()},\n"
     return full_name
 
 
@@ -217,7 +248,4 @@ def clear():
         _ = system("clear")
 
 
-def main():
-    user_start = menu()
-
-main()
+menu()
