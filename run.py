@@ -60,11 +60,15 @@ def validate_menu(value):
 
 def submit_book():
     """
-    Initial function to begin collecting data from user
+    This function will collect
+    Title and author information from the user.
     """
-    print("It's great to see you submitting a book.")
-    print("Please follow the steps to successfully log-in a book!\n")
+    email()
     username()
+
+    print("Hello there bookworm! Lets see which book you have read!")
+    print("It's okay if you enter the book you wish to read later..")
+    book_title = input("You can now enter the title of the book: \n")
 
 
 def about():
@@ -127,7 +131,7 @@ def username():
         if validate_name(last_name):
             break
     clear()
-    full_name = print(f"Welcome, {first_name.capitalize()} {last_name.capitalize()}!\n")
+    full_name = print(f"{first_name.capitalize()} {last_name.capitalize()},\n")
     return full_name
 
 
@@ -183,7 +187,6 @@ def clear():
 
 
 def main():
-    user_chose = menu()
-    user_email = email()
+    user_start = menu()
 
 main()
