@@ -67,8 +67,9 @@ def submit_book():
     username()
 
     print("Hello there bookworm! Lets see which book you have read!")
-    print("It's okay if you enter the book you wish to read later..")
+    print("It's okay if you enter the book you wish to read later..\n")
     book_title = input("You can now enter the title of the book: \n")
+    author = input(f"Who is the author of {book_title}? \n")
 
 
 def about():
@@ -170,6 +171,7 @@ def email():
             clear()
             print(f"'{user_email}' is Invalid, enter a real email address!\n")
         else:
+            clear()
             print("Thank you for entering your email!\n")
             break
     return user_email
