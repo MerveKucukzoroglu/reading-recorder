@@ -25,7 +25,7 @@ The program function only when complete and valid data is entered by the user. T
 * Once the date is valid for both the date inputs in `dd/mm/yyyy` format; a complete data submitted will be displayed as the output to the user.
 
 ## Features
-### [Existing Features](#existing-eatures)
+### Existing Features
  * **Home Page and Menu:** User is welcomed by the home page with menu. Menu is looped with `while True` and `if, elif, else` validation function until a valid input is entered by the user. The menu includes two options and user is only allowed to proceed if they enter `1` or `2`:
     1. Log a book
     2. About Reading-Tracker
@@ -66,6 +66,8 @@ The program function only when complete and valid data is entered by the user. T
      
 
 * **Email step:** Once the user is at this stage, they will be at email stage. In this step user is asked to enter a valid email. Email is validated by `regex` described and credited in the credits section below. 
+    **ATTENTION**
+    User must enter their own email address as at the end of Reading-Tracker, the email user has given will be sent an email with their data entered to Reading-Tracker. 
 
     ![enter-mail](documentation/enter_mail.png)
 
@@ -104,6 +106,14 @@ The program function only when complete and valid data is entered by the user. T
 * **Book Information Stage:** At this stage, user will be asked to enter book title and author name. The input they enter will capitalize first letter of each word by `.title()` method.
     
     ![book-info](documentation/book-info.png)
+
+    ![book_submitted](documentation/book_submitted.png)
+
+    * The book name and author name could be anything. Therefore, the only error for an incorrect input would be an empty input.
+
+        ![empty-book-name](documentation/empty-book-name.png)
+
+        ![empty-author-name](documentation/empty-author-name.png)
 
 ### Future Features
 
