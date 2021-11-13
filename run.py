@@ -228,6 +228,11 @@ def email():
     Email validation credits are described in README.md
     """
     while True:
+        print("ATTENTION! At this stage you must enter your real email!")
+        print("After successfully submitting a book to Reading-Tracker,")
+        print("your inputs will be saved and you will recieve")
+        print("an automatic email of your submission.\n")
+
         user_email = input("Please enter your email: \n")
         regex = r"^[a-zA-Z0-9._%+-]{1,64}@[a-zA-Z0-9.-]{3,252}\.[a-zA-Z]{2,}$"
     
