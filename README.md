@@ -130,13 +130,24 @@ View the live site [here](https://reading-recorder.herokuapp.com/)
 
 ### Local Deployment
 
-In order to make a local copy of this repository, you can type the following into your IDE terminal:
+* _In order to make a local copy of this repository, you can type the following into your IDE terminal:_
 
-- `git clone hhttps://github.com/MerveKucukzoroglu/reading-tracker.git`
+    * `git clone hhttps://github.com/MerveKucukzoroglu/reading-tracker.git`
 
-Alternatively, if using Gitpod, you can click below to create your own workspace using this repository.
+    Alternatively, if using Gitpod, you can click below to create your own workspace using this repository.
 
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/MerveKucukzoroglu/reading-tracker)
+    [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/MerveKucukzoroglu/reading-tracker)
+
+* _Local Deployment for raw python email code:_
+    **NOTE** : I received errors sending emails at first, due to Google's security feature with **2-Factor Authentication**, **Less Secure Apps** disabled, and **DisplayUnlockCaptcha** disabled.
+
+    **Plausible Fix** *(which has worked for me)*
+    * Turn **Off** [2-Factor Authentication](https://myaccount.google.com/signinoptions/two-step-verification/enroll-welcome)
+    * Turn **On** [Less Secure Apps](https://myaccount.google.com/lesssecureapps)
+    * Turn **On** [DisplayUnlockCaptcha](https://accounts.google.com/DisplayUnlockCaptcha)
+
+    I would recommend to create a secondary Google account for this purpose, instead of using your actual account (keep your actual account secure!). This is purely used for sending emails to the user once they submit a book, for better tracking purposes.
+
 
 ## Credits
 
@@ -149,3 +160,11 @@ Alternatively, if using Gitpod, you can click below to create your own workspace
 
 * _Email validation_ credits to:
     * [Wikipedia](https://en.wikipedia.org/wiki/Email_address) for `regex = r"^[a-zA-Z0-9._%+-]{1,64}@[a-zA-Z0-9.-]{3,252}\.[a-zA-Z]{2,}$"`.
+
+* _Raw python to send email to the user_ :
+    * Tim Nelson, Code Institute mentor to provide me with the raw python code, credentials, and how to make use of this code to send a direct email to user with the data they entered:
+    * **Sending Emails using Python** :
+        - [freeCodeCamp](https://www.freecodecamp.org/news/send-emails-using-code-4fcea9df63f/)
+        - [StackOverflow](https://stackoverflow.com/a/17596848)
+        - [StackOverflow](https://stackoverflow.com/q/16512592)
+        - [StackOverflow](https://stackoverflow.com/a/8519646)    
