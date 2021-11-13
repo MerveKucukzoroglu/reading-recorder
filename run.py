@@ -18,6 +18,7 @@ full_name = ""
 book_data = ""
 user_email = ""
 date_read = ""
+date_done = ""
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -83,8 +84,8 @@ def submit_book():
     print(full_name)
     book_data = book_info()
     print(book_data)
-    date_read = user_date_input()
-    
+    date_read = start_book_date()
+    date_done = end_book_date()
 
     # send the user an email with the book details they've entered
     msg = MIMEMultipart()
@@ -246,14 +247,14 @@ def email():
     return user_email
 
 
-def user_date_input():
+def start_book_date():
     """
-    User will be asked to enter two dates
-    First, when user started or wish to start the book
-    Second, when user completed or wish to complete
+    User will be asked to enter start date
+    Date that user started or wish to start the book
     """
+    clear()
     print("You can either enter the date you have started")
-    print(f"or wish to start reading book you submitted.")
+    print("or wish to start reading book you submitted.")
     print("You must enter the date in correct format!")
     print("i.e 'yyyy/mm/dd'\n")
     while True:
@@ -263,12 +264,37 @@ def user_date_input():
         try:
             datetime.datetime.strptime(start_date, format)
             print(f"You have started reading your book on {start_date}.")
+            end_book_date()
+            break
+        except ValueError:
+            clear()
+            print("You must enter correct date format in YYYY-MM-DD..\n")
+    return start_date
+
+
+def end_book_date():
+    """
+    User will be asked to enter end date
+    Date that user completed or wish to complete the book
+    """
+    clear()
+    print("Now, you can either enter the date you have completed")
+    print("or wish to complete reading book you submitted.")
+    print("You must enter the date in correct format!")
+    print("i.e 'yyyy/mm/dd'\n")
+    while True:
+        end_date = input("Please enter date completed in (YYYY-MM-DD): \n")
+        format = "%Y-%m-%d"
+
+        try:
+            datetime.datetime.strptime(end_date, format)
+            print(f"You have completed reading your book on {end_date}.")
             break
             clear()
         except ValueError:
             clear()
             print("You must enter correct date format in YYYY-MM-DD..\n")
-    return start_date
+    return end_date
 
 
 def clear():
