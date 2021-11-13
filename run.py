@@ -250,16 +250,20 @@ def user_date_input():
     print("You can either enter the date you have started")
     print(f"or wish to start reading book you submitted.")
     print("You must enter the date in correct format!")
-    print("i.e 'yyyy/mm/dd'")
-    
-    start_date = input("Please enter Start-date in (YYYY-MM-DD): \n")
-    format = "%Y-%m-%d"
+    print("i.e 'yyyy/mm/dd'\n")
+    while True:
+        start_date = input("Please enter Start-date in (YYYY-MM-DD): \n")
+        format = "%Y-%m-%d"
 
-    try:
-        datetime.datetime.strptime(start_date, format)
-        print("This is the correct date string format.")
-    except ValueError:
-        print("This is the incorrect date string format. It should be YYYY-MM-DD")
+        try:
+            datetime.datetime.strptime(start_date, format)
+            print(f"You have started reading your book on {start_date}.")
+            break
+            clear()
+        except ValueError:
+            clear()
+            print("You must enter correct date format in YYYY-MM-DD..\n")
+    return start_date
 
 
 def clear():
