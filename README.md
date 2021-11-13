@@ -4,7 +4,10 @@ This program aims to target the bookworms. It is a handy program to store detail
 Reading tracker was also designed bearing in mind the busy schedules of our lives and hopes to motivate new readers. When you keep a track of your books, you will see the time frame of how long you took to complete the book. 
 
 ## How to use
-The program function only when complete and valid data is entered by the user. The program loops at a particular step if the user does not enter a valid input. This is a useful way to only keep correct data entered by the user. [Please refer to existing features to view features in detail with screenshots of each step](#existing-eatures)
+The program function only when complete and valid data is entered by the user. The program loops at a particular step if the user does not enter a valid input. This is a useful way to only keep correct data entered by the user. _Please refer to 'existing features' to view features in detail with screenshots of each step_
+
+* Here is a flowchart that explains how the program functions:
+    ![flowchart](documentation/flowchart.png)
 
 * User is asked to choose an option from menu to continue:
     1. Log a book
