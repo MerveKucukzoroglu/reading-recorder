@@ -3,6 +3,7 @@ from os import system, name
 import gspread
 from google.oauth2.service_account import Credentials
 import re
+from datetime import datetime
 
 # ----- EMAIL SETTINGS ----- #
 import smtplib  # SMTP protocol client (sending emails)
@@ -16,7 +17,7 @@ PASSWORD = os.environ.get("PASSWORD")
 full_name = ""
 book_data = ""
 user_email = ""
-
+date_read = ""
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -82,6 +83,9 @@ def submit_book():
     print(full_name)
     book_data = book_info()
     print(book_data)
+    date_read = user_date_input()
+    
+
     # send the user an email with the book details they've entered
     msg = MIMEMultipart()
     msg["From"] = MY_ADDRESS
@@ -235,6 +239,16 @@ def email():
             print("Thank you for entering your email!\n")
             break
     return user_email
+
+
+def user_date_input():
+    """
+    User will be asked to enter two dates 
+    First, when user started or wish to start the book
+    Second, when user completed or wish to complete
+    """
+    print("Entering date....")
+    input("Enter the date you begin reading: \n")
 
 
 def clear():
