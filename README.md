@@ -22,7 +22,7 @@ The program function only when complete and valid data is entered by the user. T
 * Next, user will be asked to type and submit the title of book they wish to record.
 * Next, name of the author will be collected from user.
 * User will then be asked to enter start date of the book i.e _when started reading that book_. Then, user will enter date of when they have completed that book.
-* Once the date is valid for both the date inputs in `dd/mm/yyyy` format; a complete data submitted will be displayed as the output to the user.
+* Once the date is valid for both the date inputs in `YYYY-MM-DD` format; a complete data submitted will be displayed as the output to the user.
 
 ## Features
 ### Existing Features
@@ -114,6 +114,26 @@ The program function only when complete and valid data is entered by the user. T
         ![empty-book-name](documentation/empty-book-name.png)
 
         ![empty-author-name](documentation/empty-author-name.png)
+
+* **Date Input:** User is first asked to enter start input for when they started reading or wish to start the book they have submitted. Format of date input is `YYYY-MM-DD`. Next, they will be asked to enter date of when they completed or wish to complete the book. This stage is reached once the book information stage is completed.
+    * Start Date: 
+
+        ![start-date](documentation/start-date.png)
+
+    * End Date: If the start date is entered in correct Format, they will be asked to enter end date.
+
+        ![end-date](documentation/end-date.png)
+
+    * Complete date:
+
+        ![complete-date](documentation/complete-date.png)    
+
+    * Date Errors: Date format function is condition with a ValueError. If date is not in the correct format or typed anything apart from date or left blank, ValueError is expected and user is asked again until correct format input is achieved.
+
+        ![start-date-error](documentation/start-date-error.png)
+
+        ![end-date-error](documentation/end-date-error.png)
+
 
 ### Future Features
 
