@@ -263,22 +263,23 @@ def start_book_date():
 
         try:
             datetime.datetime.strptime(start_date, format)
+            clear()
             print(f"You have started reading your book on {start_date}.")
-            end_book_date()
             break
         except ValueError:
             clear()
             print("You must enter correct date format in YYYY-MM-DD..\n")
     return start_date
-
-
+    print(f"You have started reading your book on {start_date}.")
+    
+    
 def end_book_date():
     """
     User will be asked to enter end date
     Date that user completed or wish to complete the book
     """
-    clear()
-    print("Now, you can either enter the date you have completed")
+    
+    print("\nNow, you can either enter the date you have completed")
     print("or wish to complete reading book you submitted.")
     print("You must enter the date in correct format!")
     print("i.e 'yyyy/mm/dd'\n")
