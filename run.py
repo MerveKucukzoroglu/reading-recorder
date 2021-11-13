@@ -3,7 +3,7 @@ from os import system, name
 import gspread
 from google.oauth2.service_account import Credentials
 import re
-from datetime import datetime
+import datetime
 
 # ----- EMAIL SETTINGS ----- #
 import smtplib  # SMTP protocol client (sending emails)
@@ -243,12 +243,23 @@ def email():
 
 def user_date_input():
     """
-    User will be asked to enter two dates 
+    User will be asked to enter two dates
     First, when user started or wish to start the book
     Second, when user completed or wish to complete
     """
-    print("Entering date....")
-    input("Enter the date you begin reading: \n")
+    print("You can either enter the date you have started")
+    print(f"or wish to start reading book you submitted.")
+    print("You must enter the date in correct format!")
+    print("i.e 'yyyy/mm/dd'")
+    
+    start_date = input("Please enter Start-date in (YYYY-MM-DD): \n")
+    format = "%Y-%m-%d"
+
+    try:
+        datetime.datetime.strptime(start_date, format)
+        print("This is the correct date string format.")
+    except ValueError:
+        print("This is the incorrect date string format. It should be YYYY-MM-DD")
 
 
 def clear():
