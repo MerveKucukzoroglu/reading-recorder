@@ -327,9 +327,9 @@ def update_worksheet():
     worksheet_headings = reader_worksheet.row_values(1)
     print(worksheet_headings)
     
-    last_reader = reader_worksheet.append_row(READER_INFO)
+    reader_worksheet.append_row(READER_INFO)
     
-    return last_reader
+    print(READER_INFO)
   
     print("Worksheet updated successfully.\n")
 
