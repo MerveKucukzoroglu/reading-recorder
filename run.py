@@ -114,13 +114,13 @@ def book_info():
     while True:
         book_title = input("You can now enter the title of the book: \n")
         if validate_book(book_title.title()):
-            READER_INFO.append(book_title)
+            READER_INFO.append(book_title.title())
             break
         
     while True:
         author = input(f"Who is the author of {book_title.title()}? \n")
         if validate_book(author):
-            READER_INFO.append(author)
+            READER_INFO.append(author.title())
             break
     print("You have submitted the following book: \n") 
     BOOK_DATA = f"{book_title.title()} by {author.title()}\n"
@@ -321,6 +321,7 @@ def update_worksheet():
     """
     Update reader worksheet by the input given by user
     """
+    clear()
     print("Updating reader worksheet..\n")
     reader_worksheet = SHEET.worksheet("read")
 
@@ -331,9 +332,8 @@ def update_worksheet():
     
     print(READER_INFO)
   
-    print("Worksheet updated successfully.\n")
+    print("\nWorksheet updated successfully.\n")
 
-    
 
 menu()
 update_worksheet()
