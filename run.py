@@ -293,18 +293,22 @@ def end_book_date():
     while True:
         END_DATE = input("Please enter date completed in (YYYY-MM-DD): \n")
         format = "%Y-%m-%d"
-
         try:
             datetime.datetime.strptime(END_DATE, format)
             print(f"You have completed reading your book on {END_DATE}.")
+            if END_DATE <= START_DATE:
+                print("Wrong date")
+                return False    
+            else:
+                return True   
             READER_INFO.append(END_DATE)
             break
             clear()
         except ValueError:
             clear()
-            print("You must enter correct date format in YYYY-MM-DD..\n")
+            print("You must enter correct date format in YYYY-MM-DD..\n") 
     return END_DATE
-
+  
 
 def clear():
     """
