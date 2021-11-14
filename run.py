@@ -14,11 +14,12 @@ if os.path.exists("env.py"):
 MY_ADDRESS = os.environ.get("MY_ADDRESS")
 PASSWORD = os.environ.get("PASSWORD")
 
-full_name = ""
-book_data = ""
-user_email = ""
-date_read = ""
-date_done = ""
+FULL_NAME = ""
+BOOK_DATA = ""
+USER_EMAIL = ""
+START_DATE = ""
+END_DATE = ""
+READER_INFO = []
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -79,20 +80,20 @@ def submit_book():
     """
     Call email, username, and book_info functions one by one
     """
-    user_email = email()
-    full_name = username()
-    print(full_name)
-    book_data = book_info()
-    print(book_data)
-    date_read = start_book_date()
-    date_done = end_book_date()
+    USER_EMAIL = email()
+    FULL_NAME = username()
+    print(FULL_NAME)
+    BOOK_DATA = book_info()
+    print(BOOK_DATA)
+    START_DATE = start_book_date()
+    END_DATE = end_book_date()
 
     # send the user an email with the book details they've entered
     msg = MIMEMultipart()
     msg["From"] = MY_ADDRESS
-    msg["To"] = user_email
-    msg["Subject"] = f"Test: {user_email}"
-    formatEmail = f"{full_name}<br>{book_data}<br>"
+    msg["To"] = USER_EMAIL
+    msg["Subject"] = f"Test: {USER_EMAIL}"
+    formatEmail = f"{FULL_NAME}<br>{BOOK_DATA}<br>"
     msg.attach(MIMEText(str(formatEmail), "html"))  # must convert to str()
     smtpserver = smtplib.SMTP("smtp.gmail.com", 587)  # access server
     smtpserver.ehlo()  # identify ourselves to smtp gmail client
@@ -113,15 +114,17 @@ def book_info():
     while True:
         book_title = input("You can now enter the title of the book: \n")
         if validate_book(book_title.title()):
+            READER_INFO.append(book_title)
             break
         
     while True:
         author = input(f"Who is the author of {book_title.title()}? \n")
         if validate_book(author):
+            READER_INFO.append(author)
             break
     print("You have submitted the following book: \n") 
-    book_data = f"{book_title.title()} by {author.title()}\n"
-    return book_data
+    BOOK_DATA = f"{book_title.title()} by {author.title()}\n"
+    return BOOK_DATA
 
 
 def validate_book(value):
@@ -191,14 +194,16 @@ def username():
     while True:
         first_name = input("Please enter your First name: \n")
         if validate_name(first_name):
+            READER_INFO.append(first_name.capitalize())
             break
     while True:
         last_name = input("Please enter your Last name: \n")
         if validate_name(last_name):
+            READER_INFO.append(last_name.capitalize())
             break
     clear()
-    full_name = f"{first_name.capitalize()} {last_name.capitalize()},\n"
-    return full_name
+    FULL_NAME = f"{first_name.capitalize()} {last_name.capitalize()},\n"
+    return FULL_NAME
 
 
 def validate_name(name_input):
@@ -233,18 +238,19 @@ def email():
         print("After successfully submitting a book to Reading-Tracker,")
         print("your inputs will be saved and you will recieve")
         print("an automatic email of your submission.\n")
-
-        user_email = input("Please enter your email: \n")
+        
+        USER_EMAIL = input("Please enter your email: \n")
         regex = r"^[a-zA-Z0-9._%+-]{1,64}@[a-zA-Z0-9.-]{3,252}\.[a-zA-Z]{2,}$"
-    
-        if(not re.fullmatch(regex, user_email)):
+
+        if(not re.fullmatch(regex, USER_EMAIL)):
             clear()
-            print(f"'{user_email}' is Invalid, enter a real email address!\n")
+            print(f"'{USER_EMAIL}' is Invalid, enter a real email address!\n")
         else:
             clear()
             print("Thank you for entering your email!\n")
+            READER_INFO.append(USER_EMAIL)
             break
-    return user_email
+    return USER_EMAIL
 
 
 def start_book_date():
@@ -258,19 +264,20 @@ def start_book_date():
     print("You must enter the date in correct format!")
     print("i.e 'yyyy/mm/dd'\n")
     while True:
-        start_date = input("Please enter Start-date in (YYYY-MM-DD): \n")
+        START_DATE = input("Please enter Start-date in (YYYY-MM-DD): \n")
         format = "%Y-%m-%d"
 
         try:
-            datetime.datetime.strptime(start_date, format)
+            datetime.datetime.strptime(START_DATE, format)
             clear()
-            print(f"You have started reading your book on {start_date}.")
+            print(f"You have started reading your book on {START_DATE}.")
+            READER_INFO.append(START_DATE)
             break
         except ValueError:
             clear()
             print("You must enter correct date format in YYYY-MM-DD..\n")
-    return start_date
-    print(f"You have started reading your book on {start_date}.")
+    return START_DATE
+    print(f"You have started reading your book on {START_DATE}.")
     
     
 def end_book_date():
@@ -284,18 +291,19 @@ def end_book_date():
     print("You must enter the date in correct format!")
     print("i.e 'yyyy/mm/dd'\n")
     while True:
-        end_date = input("Please enter date completed in (YYYY-MM-DD): \n")
+        END_DATE = input("Please enter date completed in (YYYY-MM-DD): \n")
         format = "%Y-%m-%d"
 
         try:
-            datetime.datetime.strptime(end_date, format)
-            print(f"You have completed reading your book on {end_date}.")
+            datetime.datetime.strptime(END_DATE, format)
+            print(f"You have completed reading your book on {END_DATE}.")
+            READER_INFO.append(END_DATE)
             break
             clear()
         except ValueError:
             clear()
             print("You must enter correct date format in YYYY-MM-DD..\n")
-    return end_date
+    return END_DATE
 
 
 def clear():
@@ -309,4 +317,23 @@ def clear():
         _ = system("clear")
 
 
+def update_worksheet():
+    """
+    Update reader worksheet by the input given by user
+    """
+    print("Updating reader worksheet..\n")
+    reader_worksheet = SHEET.worksheet("read")
+
+    worksheet_headings = reader_worksheet.row_values(1)
+    print(worksheet_headings)
+    
+    last_reader = reader_worksheet.append_row(READER_INFO)
+    
+    return last_reader
+  
+    print("Worksheet updated successfully.\n")
+
+    
+
 menu()
+update_worksheet()
