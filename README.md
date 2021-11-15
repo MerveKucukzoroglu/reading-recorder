@@ -151,7 +151,11 @@ The program function only when complete and valid data is entered by the user. T
 
     ![worksheet-update](documentation/worksheet-update.png)
 
-* **Automated email to user-mail:**            
+* **Automated email to user-mail:** Lastly, user will recieve an automated email from Reading-Recorder
+
+    **NOTICE: Automated email is sent from Reading-Recorder based on the content user enters to the terminal. The automated email is sent to the email entered by the user. Therefore, it is the users responsibility to enter their own email addresses and correct data at all stages. Reading recorder forwards the user input, therefore has no responsibility to the content they enter at all stages(except the data is validated at certain stages. For example, you have to enter a valid email address, date in correct format as requested, etc.**     
+
+    ![auto-email](documentation/auto-email.png)
 
 
 ### Future Features
