@@ -132,15 +132,20 @@ The program function only when complete and valid data is entered by the user. T
 
         ![end-date](documentation/end-date.png)
 
-    * Complete date:
+    * Valid Date: Once valid date is give, user will see their Start and End date
 
-        ![complete-date](documentation/complete-date.png)    
+        ![valid-date](documentation/valid-date.png)    
 
-    * Date Errors: Date format function is condition with a ValueError. If date is not in the correct format or typed anything apart from date or left blank, ValueError is expected and user is asked again until correct format input is achieved.
+    * Date Errors: 
+        * Date format function is condition with a ValueError. If date is not in the correct format or typed anything apart from date or left blank, ValueError is expected and user is asked again until correct format input is achieved.
 
-        ![start-date-error](documentation/start-date-error.png)
+            ![start-date-error](documentation/start-date-error.png)
 
-        ![end-date-error](documentation/end-date-error.png)
+            ![end-date-error](documentation/end-date-error.png)
+
+        * Invalid Date: If the user enters an end-date which is before the start-date given, user will recieve an error message indicating what is wrong and what they must do to proceed. 
+
+            ![invalid-date](documentation/invalid-date.png) 
 
 
 ### Future Features
