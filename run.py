@@ -97,8 +97,18 @@ def submit_book():
     msg = MIMEMultipart()
     msg["From"] = MY_ADDRESS
     msg["To"] = USER_EMAIL
-    msg["Subject"] = f"Test: {USER_EMAIL}"
-    formatEmail = f"{FULL_NAME}<br>{BOOK_DATA}<br>"
+    msg["Subject"] = f"Reading Recorder"
+    formatEmail = (f"Hi Bookworm, {FULL_NAME}<br>"
+    f"You have added the following book to your reading-tracker:<br>{BOOK_DATA}<br>"
+    f"Start Date: {START_DATE}<br>End Date: {END_DATE}<br>"
+    f"<p><em>Note: This is an automated email."
+    f"You recieve this email as '{USER_EMAIL}' is entered to Reading-Recorder"
+    f" application to submit a book. Ignore this email, if it's not you.</em></p><br>"
+    f"<p>* Reading Tracker is a reading recorder to keep a track on your readings."
+    f" This program aims to target the bookworms."
+    f"It is a handy program to store details of the book you read."
+    f"You can use this tracker both when you complete a book or when you wish to read the book.<br>"
+    f"<a href = 'https://reading-recorder.herokuapp.com/'>Click here to view the application</a></p>")
     msg.attach(MIMEText(str(formatEmail), "html"))  # must convert to str()
     smtpserver = smtplib.SMTP("smtp.gmail.com", 587)  # access server
     smtpserver.ehlo()  # identify ourselves to smtp gmail client
