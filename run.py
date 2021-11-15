@@ -79,6 +79,11 @@ def validate_menu(value):
 def submit_book():
     """
     Call email, username, and book_info functions one by one
+    This function handles the automated python email sent to user
+    The email is sent from Reading-Tracker to the user email given.
+    As it is an automatic email, it is the user's responsibility 
+    to enter valid information.
+    The credits of raw-python email code is mentioned in README.md
     """
     USER_EMAIL = email()
     FULL_NAME = username()
@@ -258,6 +263,7 @@ def start_book_date():
     Date that user started or wish to start the book
     """
     clear()
+    global START_DATE
     print("You can either enter the date you have started")
     print("or wish to start reading book you submitted.")
     print("You must enter the date in correct format!")
@@ -269,7 +275,6 @@ def start_book_date():
         try:
             datetime.datetime.strptime(START_DATE, format)
             clear()
-            print(f"You have started reading your book on {START_DATE}.")
             READER_INFO.append(START_DATE)
             break
         except ValueError:
@@ -279,6 +284,10 @@ def start_book_date():
 
 
 def end_book_date():
+    global START_DATE
+    global END_DATE
+    print("START-DATE: ", START_DATE)
+
     """
     User will be asked to enter end date
     Date that user completed or wish to complete the book
@@ -290,22 +299,40 @@ def end_book_date():
     while True:
         END_DATE = input("Please enter date completed in (YYYY-MM-DD): \n")
         format = "%Y-%m-%d"
-        try:
-            datetime.datetime.strptime(END_DATE, format)
-            print(f"You have completed reading your book on {END_DATE}.")
-            if END_DATE <= START_DATE:
-                print("Wrong date")
-                return False
-            else:
-                return True
-            READER_INFO.append(END_DATE)
-            break
-            clear()
-        except ValueError:
-            clear()
-            print("You must enter correct date format in YYYY-MM-DD..\n")
+
+        if validate_date(END_DATE):
+            try:
+                datetime.datetime.strptime(END_DATE, format)
+                clear()
+            
+                print("START: ", START_DATE)
+                print(f"END: {END_DATE}\n")
+
+                READER_INFO.append(END_DATE)
+                break
+            except ValueError:
+                clear()
+                print("You must enter correct date format in YYYY-MM-DD..\n")
     return END_DATE
 
+
+def validate_date(date):
+    """
+    Validates end date is same or after start date
+    """
+    global START_DATE
+    global END_DATE
+
+    if END_DATE >= START_DATE:
+        return True
+    else:
+        clear()
+        print(f"Your Start date is {START_DATE}\n")
+        print(f"You entered {END_DATE}\n")
+        print(f"Please enter a date that is on or after {START_DATE}\n")
+        return False
+    return True
+        
 
 def clear():
     """
@@ -322,7 +349,7 @@ def update_worksheet():
     """
     Update reader worksheet by the input given by user
     """
-    clear()
+    
     print("Updating reader worksheet..\n")
     reader_worksheet = SHEET.worksheet("read")
 
