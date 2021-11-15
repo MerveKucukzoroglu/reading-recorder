@@ -1,7 +1,11 @@
 # Reading-Tracker
 Reading Tracker is a reading recorder to keep a track on your readings.
 This program aims to target the bookworms. It is a handy program to store details of the book you read. You can use this tracker both when you complete a book or when you wish to read the book. 
+
 Reading tracker was also designed bearing in mind the busy schedules of our lives and hopes to motivate new readers. When you keep a track of your books, you will see the time frame of how long you took to complete the book. 
+This program uses raw-email code to automate the user inputs and send back to the user, to the email they entered.
+
+**NOTICE: Automated email is sent from Reading-Recorder based on the content user enters to the terminal. The automated email is sent to the email entered by the user. Therefore, it is the users responsibility to enter their own email addresses and correct data at all stages. Reading recorder forwards the user input, therefore has no responsibility to the content they enter at all stages(except the data is validated at certain stages. For example, you have to enter a valid email address, date in correct format as requested, etc.**
 
 ## How to use
 The program function only when complete and valid data is entered by the user. The program loops at a particular step if the user does not enter a valid input. This is a useful way to only keep correct data entered by the user. _Please refer to 'existing features' to view features in detail with screenshots of each step_
@@ -23,6 +27,10 @@ The program function only when complete and valid data is entered by the user. T
 * Next, name of the author will be collected from user.
 * User will then be asked to enter start date of the book i.e _when started reading that book_. Then, user will enter date of when they have completed that book.
 * Once the date is valid for both the date inputs in `YYYY-MM-DD` format; a complete data submitted will be displayed as the output to the user.
+* Next, user will recieve an automated email from Reading-Recorder
+
+    **NOTICE: Automated email is sent from Reading-Recorder based on the content user enters to the terminal. The automated email is sent to the email entered by the user. Therefore, it is the users responsibility to enter their own email addresses and correct data at all stages. Reading recorder forwards the user input, therefore has no responsibility to the content they enter at all stages(except the data is validated at certain stages. For example, you have to enter a valid email address, date in correct format as requested, etc.**
+
 
 ## Features
 ### Existing Features
