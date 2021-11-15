@@ -1,8 +1,8 @@
 import os
 from os import system, name
+import re
 import gspread
 from google.oauth2.service_account import Credentials
-import re
 import datetime
 
 # ----- EMAIL SETTINGS ----- #
@@ -116,13 +116,12 @@ def book_info():
         if validate_book(book_title.title()):
             READER_INFO.append(book_title.title())
             break
-        
     while True:
         author = input(f"Who is the author of {book_title.title()}? \n")
         if validate_book(author):
             READER_INFO.append(author.title())
             break
-    print("You have submitted the following book: \n") 
+    print("You have submitted the following book: \n")
     BOOK_DATA = f"{book_title.title()} by {author.title()}\n"
     return BOOK_DATA
 
@@ -238,7 +237,7 @@ def email():
         print("After successfully submitting a book to Reading-Tracker,")
         print("your inputs will be saved and you will recieve")
         print("an automatic email of your submission.\n")
-        
+
         USER_EMAIL = input("Please enter your email: \n")
         regex = r"^[a-zA-Z0-9._%+-]{1,64}@[a-zA-Z0-9.-]{3,252}\.[a-zA-Z]{2,}$"
 
@@ -277,15 +276,13 @@ def start_book_date():
             clear()
             print("You must enter correct date format in YYYY-MM-DD..\n")
     return START_DATE
-    print(f"You have started reading your book on {START_DATE}.")
-    
-    
+
+
 def end_book_date():
     """
     User will be asked to enter end date
     Date that user completed or wish to complete the book
     """
-    
     print("\nNow, you can either enter the date you have completed")
     print("or wish to complete reading book you submitted.")
     print("You must enter the date in correct format!")
@@ -298,17 +295,17 @@ def end_book_date():
             print(f"You have completed reading your book on {END_DATE}.")
             if END_DATE <= START_DATE:
                 print("Wrong date")
-                return False    
+                return False
             else:
-                return True   
+                return True
             READER_INFO.append(END_DATE)
             break
             clear()
         except ValueError:
             clear()
-            print("You must enter correct date format in YYYY-MM-DD..\n") 
+            print("You must enter correct date format in YYYY-MM-DD..\n")
     return END_DATE
-  
+
 
 def clear():
     """
@@ -331,11 +328,11 @@ def update_worksheet():
 
     worksheet_headings = reader_worksheet.row_values(1)
     print(worksheet_headings)
-    
+
     reader_worksheet.append_row(READER_INFO)
-    
+
     print(READER_INFO)
-  
+
     print("\nWorksheet updated successfully.\n")
 
 
