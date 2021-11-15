@@ -161,6 +161,11 @@ The program function only when complete and valid data is entered by the user. T
 ### Future Features
 * Add a user-log-in for security purposes for the user. This will also enable the user to keep a track of all the books they have read and be able to see the list of books they submitted. 
 
+* For organized users, books can be divided in two categories. One for the books they have read. Second for the books they wish to read.
+
+* Another feature that would be great to add is access to add and store PDF of books in whichever category they want to, so that they can access it easily from their mobile-phones or tablets.
+
+
 ## [Testing](TESTING.md)
 ### Bugs
 * Solved Bugs
@@ -168,7 +173,9 @@ The program function only when complete and valid data is entered by the user. T
 
 ### Validator Testing
 * PEP8:
-    * test result
+    * No errors found in [PEP8](http://pep8online.com)
+    * Some warnings found, and resolved by making changes requested. Details in [Testing](TESTING.md)
+
 
 ## Deployment
 This project was deployed to Heroku.
