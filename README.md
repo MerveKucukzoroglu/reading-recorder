@@ -145,7 +145,13 @@ The program function only when complete and valid data is entered by the user. T
 
         * Invalid Date: If the user enters an end-date which is before the start-date given, user will recieve an error message indicating what is wrong and what they must do to proceed. 
 
-            ![invalid-date](documentation/invalid-date.png) 
+            ![invalid-date](documentation/invalid-date.png)
+
+* **Worksheet update:** Once the user completes all the stages successfully, the details entered will be updated in the google sheet that is connected with the application API *(Steps of how to setup an API is explained in deployment section)* 
+
+    ![worksheet-update](documentation/worksheet-update.png)
+
+* **Automated email to user-mail:**            
 
 
 ### Future Features
