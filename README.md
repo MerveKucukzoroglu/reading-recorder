@@ -168,8 +168,8 @@ The program function only when complete and valid data is entered by the user. T
 
 ## [Testing](TESTING.md)
 ### Bugs
-* Solved Bugs
-* Remaining Bugs
+* Solved Bugs : Bugs explained in detail.
+* Remaining Bugs: There are no remaining bugs
 
 ### Validator Testing
 * PEP8:
