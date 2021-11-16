@@ -188,6 +188,7 @@ I have used functions and booleans for functioning of the program. `while True` 
 This project was deployed to [Heroku](https://www.heroku.com). "Heroku is a cloud platform that lets companies build, deliver, monitor and scale apps."- Heroku.
 
 * <details><summary>Steps to open account in Heroku:</summary>
+
     * [Signup here](https://signup.heroku.com/) if you do not have an account already.
 
         ![signup-heroku](documentation/signup-heroku.png)
@@ -201,6 +202,7 @@ This project was deployed to [Heroku](https://www.heroku.com). "Heroku is a clou
 </details>    
 
 * <details><summary>Steps for deployment:</summary>
+
     * Add requirements.txt to the project for deployment.
     * Type `pip3 freeze > requirements.txt` in the terminal in Gitpod.
     * Create a new Heroku app (as explained above)
@@ -216,8 +218,9 @@ This project was deployed to [Heroku](https://www.heroku.com). "Heroku is a clou
         * "Config vars change the way your app behaves. In addition to creating your own, some add-ons come with their own."
         * I have used config vars in my project in order to secure API credentials.
 
-            ![config-var](documentation/config-var.png) 
-            ![add-config-var](documentation/add-config-var.png) 
+        ![config-var](documentation/config-var.png)
+
+        ![add-config-var](documentation/add-config-var.png) 
 
     * In Deploy page, connect Github repository
 
@@ -239,6 +242,7 @@ This project was deployed to [Heroku](https://www.heroku.com). "Heroku is a clou
 * **VIEW LIVE SITE [HERE](https://reading-recorder.herokuapp.com/)**
 
 * <details><summary>How to setup API (Application Programming Interface) Google sheets with python:</summary>
+
     * Create a [Google Account](https://www.google.com/account/about/), if you dont have any.
     * Create [Google Sheets](https://www.google.com/sheets/about/).
     * Rename the title, add headings in first row
