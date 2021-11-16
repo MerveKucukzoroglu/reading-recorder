@@ -58,6 +58,10 @@
 
         ![valid-date](documentation/valid-date.png)
 
+    * The image below is a screenshot of google sheet that stores the data inputs. The highlighted part indicates the finding, testing, and solving the bug.
+
+        ![date-testing](documentation/date-testing.png)
+
     * To follow the progress of this issue from Github issues, [click here](https://github.com/MerveKucukzoroglu/reading-tracker/issues/5).
 
 ### Remaining Bugs
@@ -71,3 +75,10 @@
     * Removed extra white trailing spaces.
     * Added 2 lines between each function.
     * Shortened or separated long sentences.
+        
+        ![pep8-validation](documentation/pep8-validation.png)    
+
+## Project Board Github:
+* In order to organize the thoughtflow and workflow, I have used Project Board in Github for this project. [Click here to follow the process](https://github.com/MerveKucukzoroglu/reading-tracker/projects/1)
+
+    ![project-board](documentation/project-board.png) 

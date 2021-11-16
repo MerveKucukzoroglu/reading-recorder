@@ -4,6 +4,7 @@ import re
 import datetime
 import gspread
 from google.oauth2.service_account import Credentials
+import time
 
 # ----- EMAIL SETTINGS ----- #
 import smtplib  # SMTP protocol client (sending emails)
@@ -336,6 +337,10 @@ def end_book_date():
                 print(f"END: {END_DATE}\n")
 
                 READER_INFO.append(END_DATE)
+                update_worksheet()
+                time.sleep(3)
+                clear()
+                menu()
                 break
             except ValueError:
                 clear()
@@ -391,4 +396,3 @@ def update_worksheet():
 
 
 menu()
-update_worksheet()

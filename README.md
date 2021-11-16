@@ -217,6 +217,7 @@ This project was deployed to [Heroku](https://www.heroku.com). "Heroku is a clou
     * In Settings add Config var (if any):
         * "Config vars change the way your app behaves. In addition to creating your own, some add-ons come with their own."
         * I have used config vars in my project in order to secure API credentials.
+        * `CREDS`, `MY_ADDRESS`, `PASSWORD`
 
         ![config-var](documentation/config-var.png)
 
@@ -274,13 +275,14 @@ This project was deployed to [Heroku](https://www.heroku.com). "Heroku is a clou
             * For the "What data will you be accessing?" question, select Application Data
             * For the "Are you planning to use this API with Compute Engine, Kubernetes Engine, App Engine, or Cloud Functions?" question, select No, I'm not using them
             * Click Next
-            * Enter a Service Account name, you can call it anything you like - I will call mine "LoveSandwiches" - then click Create
+            * Enter a Service Account name, you can call it anything you like - I will call mine "Reading-Recorder" - then click Create
             * In the Role Dropdown box choose Basic > Editor then press Continue
             * These options can be left blank, click Done
             * On the next page, click on the Service Account that has been created
             * On the next page, click on the Keys tab
             * Click on the Add Key dropdown and select Create New Key
             * Select JSON and then click Create. This will trigger the json file with your API credentials in it to download to your machine. 
+            * NOTE: all the steps to fill in the form is provided by "Love-Sandwiches, walkthrough project, Code Institute"
 
         * Go back to side menu: APIs & Services > Library.
         * Search and select 'Google Sheets'.
@@ -321,11 +323,13 @@ This project was deployed to [Heroku](https://www.heroku.com). "Heroku is a clou
 ## Credits
 
 * _Clear_ function credited to [GeekforGeeks](https://www.geeksforgeeks.org/clear-screen-python/):
-    * `def clear():`
-     `if name == "nt":`
-       ` _ = system("cls")`
-    `else:`
-        `_ = system("clear")`
+    * ```python
+        def clear():
+            if name == "nt":
+                _ = system("cls")
+            else:
+                _ = system("clear")
+        ```        
 
 * _Email validation_ credits to:
     * [Wikipedia](https://en.wikipedia.org/wiki/Email_address) for `regex = r"^[a-zA-Z0-9._%+-]{1,64}@[a-zA-Z0-9.-]{3,252}\.[a-zA-Z]{2,}$"`.
@@ -342,18 +346,24 @@ This project was deployed to [Heroku](https://www.heroku.com). "Heroku is a clou
 
     * `SCOPE = ["https://www.googleapis.com/auth/spreadsheets", "https://www.googleapis.com/auth/drive.file", "https://www.googleapis.com/auth/drive"]`
 
-    * `CREDS = Credentials.from_service_account_file('creds.json')
+    
+    * ```python  
+        CREDS = Credentials.from_service_account_file('creds.json')
         SCOPED_CREDS = CREDS.with_scopes(SCOPE)
         GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
-        SHEET = GSPREAD_CLIENT.open('reading_tracker')`       
+        SHEET = GSPREAD_CLIENT.open('reading_tracker')
+        ```    
 
 * Date validation: In order to validate date format, I modified the [Kite code](https://www.kite.com/python/answers/how-to-validate-a-date-string-format-in-python) according to my requirement:
 
-        `date_string = '12-25-2018'
-        format = "%Y-%m-d"
+```python
+date_string = '12-25-2018'
+format = "%Y-%m-d"
 
-        try:
-            datetime.datetime.strptime(date_string, format)
-            print("This is the correct date string format.")
-        except ValueError:
-            print("This is the incorrect date string format. It should be YYYY-MM-DD")`
+try:
+    datetime.datetime.strptime(date_string, format)
+    print("This is the correct date string format.")
+except ValueError:
+    print("This is the incorrect date string format. It should be YYYY-MM-DD")
+```    
+
