@@ -42,11 +42,11 @@ def menu():
     One for log a book
     Second is information on the program.
     """
-    print("Welcome to Reading-Tracker!\n")
+    print("Welcome to Reading-Recorder!\n")
     while True:
         print("Menu:")
         print("1. Log a book")
-        print("2. About Reading-Tracker\n")
+        print("2. About Reading-Recorder\n")
 
         menu_chosen = input("Enter '1' or '2' from the menu to continue: \n")
 
@@ -83,7 +83,7 @@ def submit_book():
     """
     Call email, username, and book_info functions one by one
     This function handles the automated python email sent to user
-    The email is sent from Reading-Tracker to the user email given.
+    The email is sent from Reading-Recorder to the user email given.
     As it is an automatic email, it is the user's responsibility
     to enter valid information.
     The credits of raw-python email code is mentioned in README.md
@@ -108,7 +108,7 @@ def submit_book():
     msg["Subject"] = "Reading Recorder"
     format_email = (
         f"Hi Bookworm, {FULL_NAME}<br>"
-        "You have added the following book to your reading-tracker:"
+        "You have added the following book to your reading-recorder:"
         f"<br>{BOOK_DATA}<br>"
         f"Start Date: {START_DATE}<br>End Date: {END_DATE}<br>"
         "<p><em>Note: This is an automated email."
@@ -116,7 +116,7 @@ def submit_book():
         "is entered to Reading-Recorder"
         " application to submit a book. Ignore this email,"
         " if it's not you.</em></p><br>"
-        "<p>* Reading Tracker is a reading recorder to keep"
+        "<p>* Reading Recorder is a reading recorder to keep"
         " a track on your readings."
         " This program aims to target the bookworms."
         "It is a handy program to store details of the book you read."
@@ -268,7 +268,7 @@ def email():
     global USER_EMAIL
     while True:
         print("ATTENTION! At this stage you must enter your real email!")
-        print("After successfully submitting a book to Reading-Tracker,")
+        print("After successfully submitting a book to Reading-Recorder,")
         print("your inputs will be saved and you will recieve")
         print("an automatic email of your submission.\n")
 

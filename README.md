@@ -1,5 +1,5 @@
-# Reading-Tracker
-Reading Tracker is a reading recorder to keep a track on your readings.
+# Reading-Recorder
+Reading Recorder is a reading recorder to keep a track on your readings.
 This program aims to target the bookworms. It is a handy program to store details of the book you read. You can use this tracker both when you complete a book or when you wish to read the book. 
 
 Reading tracker was also designed bearing in mind the busy schedules of our lives and hopes to motivate new readers. When you keep a track of your books, you will see the time frame of how long you took to complete the book. 
