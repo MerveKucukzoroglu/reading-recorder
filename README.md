@@ -10,9 +10,6 @@ This program uses raw-email code to automate the user inputs and send back to th
 ## How to use
 The program function only when complete and valid data is entered by the user. The program loops at a particular step if the user does not enter a valid input. This is a useful way to only keep correct data entered by the user. _Please refer to 'existing features' to view features in detail with screenshots of each step_
 
-* Here is a flowchart that explains how the program functions:
-    ![flowchart](documentation/flowchart.png)
-
 * User is asked to choose an option from menu to continue:
     1. Log a book
     2. About Reading-Tracker
@@ -169,6 +166,10 @@ The program function only when complete and valid data is entered by the user. T
 ## Data Model:
 I have used functions and booleans for functioning of the program. `while True` loops the user until expected input is typed in the terminal. These loops are validated by other validate functions with `if, elif, else` statements.
 
+* Here is a flowchart that explains how the program functions:
+    
+    ![flowchart](documentation/flowchart.png)
+
 
 ## [Testing](TESTING.md)
 ### Bugs
@@ -231,7 +232,61 @@ This project was deployed to [Heroku](https://www.heroku.com). "Heroku is a clou
 
         ![view-app](documentation/view-app.png)
 
-* **View the live site** [here](https://reading-recorder.herokuapp.com/)
+* **VIEW LIVE SITE [HERE](https://reading-recorder.herokuapp.com/)**
+
+* How to setup API (Application Programming Interface) Google sheets with python:
+    * Create a [Google Account](https://www.google.com/account/about/), if you dont have any.
+    * Create [Google Sheets](https://www.google.com/sheets/about/).
+    * Rename the title, add headings in first row
+
+        ![google-sheets](documentation/google-sheets.png)
+
+    * [Open Google Clouds](https://console.cloud.google.com/getting-started?pli=1).
+    * From Select Project button, Select 'New Project'.
+    * Choose a project name and click 'Create'.
+        
+        ![new-api](documentation/new-api.png)
+
+    * Click Select Project from dashbord notifications to go to project page.
+
+        ![select-project](documentation/select-project.png)
+
+    *  From side menu: APIs & Services > Library.
+
+        ![google-drive-api](documentation/google-drive-api.png)
+        
+    * Search and select 'Google Drive'.
+
+        ![new-api](documentation/new-api.png)  
+
+        * Click 'Enable' button.      
+        * Create Google Drive Credentials. Click 'Create Credentials'.
+        * Fill the form:
+            * From the "Which API are you using?" dropdown menu, choose Google Drive API
+            * For the "What data will you be accessing?" question, select Application Data
+            * For the "Are you planning to use this API with Compute Engine, Kubernetes Engine, App Engine, or Cloud Functions?" question, select No, I'm not using them
+            * Click Next
+            * Enter a Service Account name, you can call it anything you like - I will call mine "LoveSandwiches" - then click Create
+            * In the Role Dropdown box choose Basic > Editor then press Continue
+            * These options can be left blank, click Done
+            * On the next page, click on the Service Account that has been created
+            * On the next page, click on the Keys tab
+            * Click on the Add Key dropdown and select Create New Key
+            * Select JSON and then click Create. This will trigger the json file with your API credentials in it to download to your machine. 
+
+        * Go back to side menu: APIs & Services > Library.
+        * Search and select 'Google Sheets'.
+        * Click Enable. Google sheets don't require credentials.
+    
+    * Find the Google Drive, JSON credentials file in your computer and rename it to `creds.json`. Then add it to your gitpod workspace. 
+    * Open creds.json and copy the client_email created.
+    * Go back to Google sheet you created and click "SHARE" button. Paste the client email and click share.
+    * In gitpod workspace add `creds.json` to `.gitignore` file to secure credentials.
+    * Install gspread and google auth in gitpod workspace to access google sheets API:
+        * Type `pip3 install gspread google-auth` to python terminal before starting to code. 
+        * At top of python file, type:
+            * ` import gspread`
+            * `from google.oauth2.service_account import Credentials`
 
 ### Local Deployment
 
@@ -267,9 +322,18 @@ This project was deployed to [Heroku](https://www.heroku.com). "Heroku is a clou
     * [Wikipedia](https://en.wikipedia.org/wiki/Email_address) for `regex = r"^[a-zA-Z0-9._%+-]{1,64}@[a-zA-Z0-9.-]{3,252}\.[a-zA-Z]{2,}$"`.
 
 * _Raw python to send email to the user_ :
-    * Tim Nelson, Code Institute mentor to provide me with the raw python code, credentials, and how to make use of this code to send a direct email to user with the data they entered:
+    * Tim Nelson, Code Institute mentor to provide me with the raw python code, credentials, and how to make use of this code to send a direct email to user with the data they entered. I have edited the code as per my projects needs:
     * **Sending Emails using Python** :
         - [freeCodeCamp](https://www.freecodecamp.org/news/send-emails-using-code-4fcea9df63f/)
         - [StackOverflow](https://stackoverflow.com/a/17596848)
         - [StackOverflow](https://stackoverflow.com/q/16512592)
         - [StackOverflow](https://stackoverflow.com/a/8519646)    
+
+* SCOPE code credits to Code Institute, Love Sandwiches Walkthrough Project. I have edited it according to my projects needs:
+
+    * `SCOPE = ["https://www.googleapis.com/auth/spreadsheets", "https://www.googleapis.com/auth/drive.file", "https://www.googleapis.com/auth/drive"]`
+
+    * `CREDS = Credentials.from_service_account_file('creds.json')
+        SCOPED_CREDS = CREDS.with_scopes(SCOPE)
+        GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
+        SHEET = GSPREAD_CLIENT.open('reading_tracker')`       
