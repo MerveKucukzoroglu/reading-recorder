@@ -2,9 +2,10 @@ import os
 from os import system, name
 import re
 import datetime
+import time
 import gspread
 from google.oauth2.service_account import Credentials
-import time
+
 
 # ----- EMAIL SETTINGS ----- #
 import smtplib  # SMTP protocol client (sending emails)
