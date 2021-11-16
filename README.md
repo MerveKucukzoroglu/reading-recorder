@@ -166,6 +166,10 @@ The program function only when complete and valid data is entered by the user. T
 * Another feature that would be great to add is access to add and store PDF of books in whichever category they want to, so that they can access it easily from their mobile-phones or tablets.
 
 
+## Data Model:
+I have used functions and booleans for functioning of the program. `while True` loops the user until expected input is typed in the terminal. These loops are validated by other validate functions with `if, elif, else` statements.
+
+
 ## [Testing](TESTING.md)
 ### Bugs
 * Solved Bugs : Bugs explained in detail.
@@ -178,18 +182,56 @@ The program function only when complete and valid data is entered by the user. T
 
 
 ## Deployment
-This project was deployed to Heroku.
+This project was deployed to [Heroku](https://www.heroku.com). "Heroku is a cloud platform that lets companies build, deliver, monitor and scale apps."- Heroku.
+
+* Steps to open account in Heroku:
+    * [Signup here](https://signup.heroku.com/) if you do not have an account already.
+
+        ![signup-heroku](documentation/signup-heroku.png)
+
+    * After you fill in all the information for account and sign in, you will be on [Dashbord](https://dashboard.heroku.com/apps). Here is where you will create an application. 
+    * Click on New => Create new app.
+
+        ![new-app](documentation/new-app.png)
+
+    * Choose a name to your application and select location that you are based.
+
 * Steps for deployment:
     * Add requirements.txt to the project for deployment.
-    * Type `pip3 freeze > requirements.txt` in the terminal.
-    * Create a new Heroku app
+    * Type `pip3 freeze > requirements.txt` in the terminal in Gitpod.
+    * Create a new Heroku app (as explained above)
     * Name the app to "reading-recorder" and location as Europe.
-    * In settings add Config var and buildpacks in order _Python_ and _NodeJS_
-    * In Deploy page, connect Github repository
-    * Enable automatic deploys until the project is completed 
-    * Click on __Deploy__
 
-View the live site [here](https://reading-recorder.herokuapp.com/)
+        ![create-app](documentation/create-app.png) 
+
+    * In Settings add buildpacks in order _Python_ and _NodeJS_
+
+        ![buildpacks](documentation/buildpacks.png) 
+
+    * In Settings add Config var (if any):
+        * "Config vars change the way your app behaves. In addition to creating your own, some add-ons come with their own."
+        * I have used config vars in my project in order to secure API credentials.
+
+            ![config-var](documentation/config-var.png) 
+            ![add-config-var](documentation/add-config-var.png) 
+
+    * In Deploy page, connect Github repository
+
+        ![github-connect](documentation/github-connect.png)
+
+    * Connect project repository from your connected Github account
+
+        ![connect-repo](documentation/connect-repo.png)
+
+    * Manually deploy the project and choose the branch (main/master). Click on Deploy branch.
+
+        ![manual-deploy](documentation/manual-deploy.png)
+
+    * Once your app is deployed and ready, click on view to visit your deployed page.
+
+        ![view-app](documentation/view-app.png)
+
+* **View the live site** [here](https://reading-recorder.herokuapp.com/)
 
 ### Local Deployment
 
