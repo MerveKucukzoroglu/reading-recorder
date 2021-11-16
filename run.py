@@ -1,9 +1,9 @@
 import os
 from os import system, name
 import re
+import datetime
 import gspread
 from google.oauth2.service_account import Credentials
-import datetime
 
 # ----- EMAIL SETTINGS ----- #
 import smtplib  # SMTP protocol client (sending emails)
@@ -21,7 +21,7 @@ START_DATE = ""
 END_DATE = ""
 READER_INFO = []
 
-#SCOPE code credits to CI, mentioned in README.md
+# SCOPE code credits to CI, mentioned in README.md
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
     "https://www.googleapis.com/auth/drive.file",
@@ -82,10 +82,15 @@ def submit_book():
     Call email, username, and book_info functions one by one
     This function handles the automated python email sent to user
     The email is sent from Reading-Tracker to the user email given.
-    As it is an automatic email, it is the user's responsibility 
+    As it is an automatic email, it is the user's responsibility
     to enter valid information.
     The credits of raw-python email code is mentioned in README.md
     """
+    global USER_EMAIL
+    global FULL_NAME
+    global BOOK_DATA
+    global START_DATE
+    global END_DATE
     USER_EMAIL = email()
     FULL_NAME = username()
     print(FULL_NAME)
@@ -98,19 +103,27 @@ def submit_book():
     msg = MIMEMultipart()
     msg["From"] = MY_ADDRESS
     msg["To"] = USER_EMAIL
-    msg["Subject"] = f"Reading Recorder"
-    formatEmail = (f"Hi Bookworm, {FULL_NAME}<br>"
-    f"You have added the following book to your reading-tracker:<br>{BOOK_DATA}<br>"
-    f"Start Date: {START_DATE}<br>End Date: {END_DATE}<br>"
-    f"<p><em>Note: This is an automated email."
-    f"You recieve this email as '{USER_EMAIL}' is entered to Reading-Recorder"
-    f" application to submit a book. Ignore this email, if it's not you.</em></p><br>"
-    f"<p>* Reading Tracker is a reading recorder to keep a track on your readings."
-    f" This program aims to target the bookworms."
-    f"It is a handy program to store details of the book you read."
-    f"You can use this tracker both when you complete a book or when you wish to read the book.<br>"
-    f"<a href = 'https://reading-recorder.herokuapp.com/'>Click here to view the application</a></p>")
-    msg.attach(MIMEText(str(formatEmail), "html"))  # must convert to str()
+    msg["Subject"] = "Reading Recorder"
+    format_email = (
+        f"Hi Bookworm, {FULL_NAME}<br>"
+        "You have added the following book to your reading-tracker:"
+        f"<br>{BOOK_DATA}<br>"
+        f"Start Date: {START_DATE}<br>End Date: {END_DATE}<br>"
+        "<p><em>Note: This is an automated email."
+        f"You recieve this email as '{USER_EMAIL}'"
+        "is entered to Reading-Recorder"
+        " application to submit a book. Ignore this email,"
+        " if it's not you.</em></p><br>"
+        "<p>* Reading Tracker is a reading recorder to keep"
+        " a track on your readings."
+        " This program aims to target the bookworms."
+        "It is a handy program to store details of the book you read."
+        "You can use this tracker both when you complete a book "
+        "or when you wish to read the book.<br>"
+        "<a href = 'https://reading-recorder.herokuapp.com/'>"
+        "Click here to view the application</a></p>"
+        )
+    msg.attach(MIMEText(str(format_email), "html"))  # must convert to str()
     smtpserver = smtplib.SMTP("smtp.gmail.com", 587)  # access server
     smtpserver.ehlo()  # identify ourselves to smtp gmail client
     smtpserver.starttls()  # secure our email with tls encryption
@@ -125,6 +138,7 @@ def book_info():
     This function will collect
     Title and author information from the user.
     """
+    global BOOK_DATA
     print("Hello there bookworm! Lets see which book you have read!")
     print("It's okay if you enter the book you wish to read later..\n")
     while True:
@@ -181,11 +195,11 @@ def validate_about(option):
     Validates the option chosen in menu - about section
     Redirects user to valid option chosen
     """
-    if (option.lower() == "y"):
+    if option.lower() == "y":
         clear()
         print("Going to log a book...\n")
         submit_book()
-    elif (option.lower() == "n"):
+    elif option.lower() == "n":
         clear()
         menu()
     elif option == "":
@@ -206,6 +220,7 @@ def username():
     Collect username by input
     Place it to the name field in Google Sheet
     """
+    global FULL_NAME
     while True:
         first_name = input("Please enter your First name: \n")
         if validate_name(first_name):
@@ -230,11 +245,11 @@ def validate_name(name_input):
         clear()
         print("Oh..uh I'm afraid you have left the name blank.\n")
         return False
-    elif (name_input.isnumeric()):
+    elif name_input.isnumeric():
         clear()
         print(f"Have you just entered number '{name_input}' as your name?")
         return False
-    elif (not name_input.isalpha()):
+    elif not name_input.isalpha():
         clear()
         print(f"You entered '{name_input}', enter your name in alphabets!\n")
         return False
@@ -248,6 +263,7 @@ def email():
     Collects and passes only valid email of the user
     Email validation credits are described in README.md
     """
+    global USER_EMAIL
     while True:
         print("ATTENTION! At this stage you must enter your real email!")
         print("After successfully submitting a book to Reading-Tracker,")
@@ -257,7 +273,7 @@ def email():
         USER_EMAIL = input("Please enter your email: \n")
         regex = r"^[a-zA-Z0-9._%+-]{1,64}@[a-zA-Z0-9.-]{3,252}\.[a-zA-Z]{2,}$"
 
-        if(not re.fullmatch(regex, USER_EMAIL)):
+        if not re.fullmatch(regex, USER_EMAIL):
             clear()
             print(f"'{USER_EMAIL}' is Invalid, enter a real email address!\n")
         else:
@@ -281,10 +297,10 @@ def start_book_date():
     print("i.e 'yyyy/mm/dd'\n")
     while True:
         START_DATE = input("Please enter Start-date in (YYYY-MM-DD): \n")
-        format = "%Y-%m-%d"
+        date_format = "%Y-%m-%d"
 
         try:
-            datetime.datetime.strptime(START_DATE, format)
+            datetime.datetime.strptime(START_DATE, date_format)
             clear()
             READER_INFO.append(START_DATE)
             break
@@ -310,13 +326,12 @@ def end_book_date():
     print("i.e 'yyyy/mm/dd'\n")
     while True:
         END_DATE = input("Please enter date completed in (YYYY-MM-DD): \n")
-        format = "%Y-%m-%d"
+        date_format = "%Y-%m-%d"
 
         if validate_date(END_DATE):
             try:
-                datetime.datetime.strptime(END_DATE, format)
+                datetime.datetime.strptime(END_DATE, date_format)
                 clear()
-            
                 print("START: ", START_DATE)
                 print(f"END: {END_DATE}\n")
 
@@ -335,7 +350,7 @@ def validate_date(date):
     global START_DATE
     global END_DATE
 
-    if END_DATE >= START_DATE:
+    if date >= START_DATE:
         return True
     else:
         clear()
@@ -344,7 +359,7 @@ def validate_date(date):
         print(f"Please enter a date that is on or after {START_DATE}\n")
         return False
     return True
-        
+
 
 def clear():
     """
@@ -361,7 +376,7 @@ def update_worksheet():
     """
     Update reader worksheet by the input given by user
     """
-    
+
     print("Updating reader worksheet..\n")
     reader_worksheet = SHEET.worksheet("read")
 
