@@ -187,7 +187,7 @@ I have used functions and booleans for functioning of the program. `while True` 
 ## Deployment
 This project was deployed to [Heroku](https://www.heroku.com). "Heroku is a cloud platform that lets companies build, deliver, monitor and scale apps."- Heroku.
 
-* Steps to open account in Heroku:
+* <details><summary>Steps to open account in Heroku:</summary>
     * [Signup here](https://signup.heroku.com/) if you do not have an account already.
 
         ![signup-heroku](documentation/signup-heroku.png)
@@ -198,8 +198,9 @@ This project was deployed to [Heroku](https://www.heroku.com). "Heroku is a clou
         ![new-app](documentation/new-app.png)
 
     * Choose a name to your application and select location that you are based.
+</details>    
 
-* Steps for deployment:
+* <details><summary>Steps for deployment:</summary>
     * Add requirements.txt to the project for deployment.
     * Type `pip3 freeze > requirements.txt` in the terminal in Gitpod.
     * Create a new Heroku app (as explained above)
@@ -233,10 +234,11 @@ This project was deployed to [Heroku](https://www.heroku.com). "Heroku is a clou
     * Once your app is deployed and ready, click on view to visit your deployed page.
 
         ![view-app](documentation/view-app.png)
+</details>
 
 * **VIEW LIVE SITE [HERE](https://reading-recorder.herokuapp.com/)**
 
-* How to setup API (Application Programming Interface) Google sheets with python:
+* <details><summary>How to setup API (Application Programming Interface) Google sheets with python:</summary>
     * Create a [Google Account](https://www.google.com/account/about/), if you dont have any.
     * Create [Google Sheets](https://www.google.com/sheets/about/).
     * Rename the title, add headings in first row
@@ -289,6 +291,7 @@ This project was deployed to [Heroku](https://www.heroku.com). "Heroku is a clou
         * At top of python file, type:
             * ` import gspread`
             * `from google.oauth2.service_account import Credentials`
+</details>            
 
 ### Local Deployment
 
