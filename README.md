@@ -6,6 +6,8 @@ Reading tracker was also designed bearing in mind the busy schedules of our live
 This program uses raw-email code to automate the user inputs and send back to the user, to the email they entered.
 
 **NOTICE: Automated email is sent from Reading-Recorder based on the content user enters to the terminal. The automated email is sent to the email entered by the user. Therefore, it is the users responsibility to enter their own email addresses and correct data at all stages. Reading recorder forwards the user input, therefore has no responsibility to the content they enter at all stages(except the data is validated at certain stages. For example, you have to enter a valid email address, date in correct format as requested, etc.**
+    
+![ami-responsive](documentation/ami-responsive.png)
 
 ## How to use
 The program function only when complete and valid data is entered by the user. The program loops at a particular step if the user does not enter a valid input. This is a useful way to only keep correct data entered by the user. _Please refer to 'existing features' to view features in detail with screenshots of each step_
