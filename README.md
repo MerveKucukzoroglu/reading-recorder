@@ -266,8 +266,6 @@ This project was deployed to [Heroku](https://www.heroku.com). "Heroku is a clou
         
     * Search and select 'Google Drive'.
 
-        ![new-api](documentation/new-api.png)  
-
         * Click 'Enable' button.      
         * Create Google Drive Credentials. Click 'Create Credentials'.
         * Fill the form:
