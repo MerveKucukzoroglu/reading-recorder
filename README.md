@@ -337,3 +337,14 @@ This project was deployed to [Heroku](https://www.heroku.com). "Heroku is a clou
         SCOPED_CREDS = CREDS.with_scopes(SCOPE)
         GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
         SHEET = GSPREAD_CLIENT.open('reading_tracker')`       
+
+* Date validation: In order to validate date format, I modified the [Kite code](https://www.kite.com/python/answers/how-to-validate-a-date-string-format-in-python) according to my requirement:
+
+        `date_string = '12-25-2018'
+        format = "%Y-%m-d"
+
+        try:
+            datetime.datetime.strptime(date_string, format)
+            print("This is the correct date string format.")
+        except ValueError:
+            print("This is the incorrect date string format. It should be YYYY-MM-DD")`

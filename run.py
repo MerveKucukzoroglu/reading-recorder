@@ -21,6 +21,7 @@ START_DATE = ""
 END_DATE = ""
 READER_INFO = []
 
+#SCOPE code credits to CI, mentioned in README.md
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
     "https://www.googleapis.com/auth/drive.file",
@@ -294,14 +295,15 @@ def start_book_date():
 
 
 def end_book_date():
+    """
+    User will be asked to enter end date
+    Date that user completed or wish to complete the book
+    Validate-date code credentials in README.md
+    """
     global START_DATE
     global END_DATE
     print("START-DATE: ", START_DATE)
 
-    """
-    User will be asked to enter end date
-    Date that user completed or wish to complete the book
-    """
     print("\nNow, you can either enter the date you have completed")
     print("or wish to complete reading book you submitted.")
     print("You must enter the date in correct format!")
